@@ -37,7 +37,7 @@ export default function DexHolder() {
 			<div className="row">
 				{pokedexes && pokedexes.filter((pokedex) => !pokedex.name.includes("updated-")).map((pokedex) => {
 					return(
-						<div key={ pokedex.url } className="col-sm-12 col-md-4 col-lg-3">
+						<div key={ pokedex.url } className="col-sm-12 col-md-6 col-lg-3">
 							<DexCard url={ pokedex.url } />
 						</div>
 					);
