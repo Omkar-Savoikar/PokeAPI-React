@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PokemonImage from './PokemonImage';
 
 export default function PokemonCard(props) {
 	const [pokemon, setPokemon] = useState(null);
@@ -39,7 +38,7 @@ export default function PokemonCard(props) {
 	return (
 		<div className="card my-3">
 			{(pokemon.sprites.front_default === "") && <h4 className="text-center">Image not available</h4>} 
-			{pokemon.sprites.front_default && <PokemonImage sprites = { pokemon.sprites } />}
+			{pokemon.sprites.front_default && <img className='img-fluid w-50 m-auto' src={ pokemon.sprites.front_default } alt='Pokemon front face' />}
 			<div className="card-body d-flex flex-column justify-content-center">
 				<h3 className="card-title text-center">{ capitalise(pokemon.name) }</h3>
 				<button className="btn btn-primary" onClick={ showPokemon }>Check Details</button>

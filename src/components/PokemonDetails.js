@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import PokemonImage from './PokemonImage';
 
 export default function PokemonDetails() {
 	const [pokemon, setPokemon] = useState(null);
@@ -57,7 +56,7 @@ export default function PokemonDetails() {
 		return name;
 	};
 
-	if (pokemon === null || pokemon.sprites.front_default === null) {
+	if (pokemon === null) {
 		return <div className="container text-white">Loading Pokemon...</div>
 	}
 
@@ -65,7 +64,7 @@ export default function PokemonDetails() {
 		<div className="container card my-3">
 			<div className="card-body d-flex flex-column justify-content-center">
 				{(pokemon.sprites.front_default === "") && <h4 className="text-center">Image not available</h4>} 
-				{pokemon.sprites && <PokemonImage sprites = { pokemon.sprites } />}
+				{pokemon.sprites.front_default && <img className='img-fluid w-25 m-auto' src={ pokemon.sprites.front_default } alt='Pokemon front face' />}
 				<h3 className="card-title text-center">{ capitalise(pokemon.name) }</h3>
 				<table className="container table table-dark table-striped-columns text-center">
 					<thead>
@@ -122,6 +121,16 @@ export default function PokemonDetails() {
 					</tbody>
 				</table>
 				<p>Moves: { getMoves() }</p>
+				<div className='row'>
+					<p>More Images:</p>
+					{Object.entries(pokemon.sprites).filter((imageSrc) => imageSrc[1] !== null).filter((imageSrc) => typeof(imageSrc[1]) !== "object").map((imageSrc) => {
+						return(
+							<div key={ imageSrc[1] } className='col-sm-12 col-md-4 col-lg-3 d-flex'>
+								<img className='img-fluid m-auto' src={ imageSrc[1] } alt={ imageSrc[0] } />
+							</div>
+						)
+					})}
+				</div>
 			</div>
 		</div>
 	)

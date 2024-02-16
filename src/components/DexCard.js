@@ -27,7 +27,7 @@ export default function DexCard(props) {
 
 	const getDescription = () => {
 		const desc = pokedex.descriptions[pokedex.descriptions.length - 1];
-		return (desc?.description || "No description available");
+		return (desc?.description || null);
 	}
 
 	const capitalise = (name) => {
@@ -51,13 +51,13 @@ export default function DexCard(props) {
 	}
 
 	return (
-		<div className="card my-3" style={{height: "220px"}}>
+		<div className="card my-3" style={ { height: "220px" } }>
 			<div className="card-header text-center">
-				<h2>{capitalise(pokedex.name)}</h2>
+				<h2>{ capitalise(pokedex.name) }</h2>
 			</div>
 			<div className="card-body">
-				<p className='card-text'>{getDescription()}</p> 
-				<button className="btn btn-primary position-absolute start-50 translate-middle" style={{bottom: "10px"}} onClick={showPokemon}>Check Pokemons</button>
+				<p className='card-text text-center'>{ getDescription() || `${capitalise(pokedex.name)} dex` }</p> 
+				<button className="btn btn-primary position-absolute start-50 translate-middle" style={ { bottom: "10px" } } onClick={ showPokemon }>Check Pokemons</button>
 			</div>
 		</div>
 	);

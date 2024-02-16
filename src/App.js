@@ -12,10 +12,10 @@ function App() {
 			<Navbar />
 			<Router>
 				<Routes>
-					<Route path="/" exact element={<DexHolder />} />
-					<Route path="/pokedex/:id" element={<Pokedex />} />
-					<Route path="/pokemon/:id" element={<PokemonDetails />} />
-					<Route path="/about" exact element={<About />} />
+					<Route path="/" exact element={ <DexHolder /> } />
+					<Route path="/pokedex/:id" element={ <Pokedex /> } />
+					<Route path="/pokemon/:id" element={ <PokemonDetails /> } />
+					<Route path="/about" exact element={ <About /> } />
 				</Routes>
 			</Router>
 		</div>

@@ -31,8 +31,8 @@ export default function Pokedex() {
 			<div className="row">
 				{pokemons && pokemons.map((pokemon) => {
 					return(
-						<div key={pokemon.entry_number} className="col-sm-6 col-md-4 col-lg-4">
-							<PokemonCard url={pokemon.pokemon_species.url}  />
+						<div key={ pokemon.entry_number } className="col-sm-12 col-md-4 col-lg-3">
+							<PokemonCard url={ pokemon.pokemon_species.url }  />
 						</div>
 					);
 				})}
